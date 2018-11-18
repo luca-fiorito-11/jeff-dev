@@ -16,7 +16,7 @@ cache:
     - ${CACHEDIR}
 
 stages:
-  - cache
+  - setup
   - ace
 
 jobs:
