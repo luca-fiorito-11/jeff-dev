@@ -42,7 +42,7 @@ jobs:
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/PVBV_utils.git )
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/benchmarks.git )
         - ( cd ${UTILS} && ./install_openmc.sh )
-        - mkdir ${UTILS}/openmc/build && cd ${UTILS}/openmc/build
+        - mkdir -p ${UTILS}/openmc/build && cd ${UTILS}/openmc/build
         - cmake ..
         - make
       script: skip
