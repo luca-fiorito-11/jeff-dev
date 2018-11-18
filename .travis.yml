@@ -36,6 +36,8 @@ jobs:
 
     - stage: ace
       name: get ACE files
+      before_install:
+        - pip install pandas
       install:
         - curl -o ${ACEDIR}/31-Ga-69g.jeff33.ace https://github.com/luca-fiorito-11/31-Ga-69g/releases/download/v4.0T0/31-Ga-69g.jeff33.ace -k
         - curl -o ${ACEDIR}/31-Ga-79g.jeff33.ace https://github.com/luca-fiorito-11/31-Ga-71g/releases/download/v4.0T0/31-Ga-71g.jeff33.ace -k
