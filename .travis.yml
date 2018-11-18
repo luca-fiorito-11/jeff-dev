@@ -30,6 +30,7 @@ jobs:
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/PVBV_utils.git )
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/benchmarks.git )
         - bash ${UTILS}/install_openmc.sh
+        - ls ${UTILS}/
       script: skip
 
 
