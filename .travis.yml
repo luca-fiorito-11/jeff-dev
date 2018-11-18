@@ -39,10 +39,10 @@ jobs:
       before_install:
         - pip install pandas h5py scipy uncertainties
       install:
-        - curl -o ${ACEDIR}/31-Ga-69g.jeff33.ace https://github.com/luca-fiorito-11/31-Ga-69g/releases/download/v4.0T0/31-Ga-69g.jeff33.ace -k
-        - curl -o ${ACEDIR}/31-Ga-79g.jeff33.ace https://github.com/luca-fiorito-11/31-Ga-71g/releases/download/v4.0T0/31-Ga-71g.jeff33.ace -k
+        #- curl -o ${ACEDIR}/31-Ga-69g.jeff33.ace https://github.com/luca-fiorito-11/31-Ga-69g/releases/download/v4.0T0/31-Ga-69g.jeff33.ace -k
+        #- curl -o ${ACEDIR}/31-Ga-79g.jeff33.ace https://github.com/luca-fiorito-11/31-Ga-71g/releases/download/v4.0T0/31-Ga-71g.jeff33.ace -k
         - curl -o ${ACEDIR}/94-Pu-239g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-239g/releases/download/v4.0T0/94-Pu-239g.jeff33.ace -k
-        - curl -o ${ACEDIR}/94-Pu-240g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-240g/releases/download/v4.0T0/94-Pu-240g.jeff33.ace -k
-        - curl -o ${ACEDIR}/94-Pu-241g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-241g/releases/download/v4.0T0/94-Pu-241g.jeff33.ace -k
+        #- curl -o ${ACEDIR}/94-Pu-240g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-240g/releases/download/v4.0T0/94-Pu-240g.jeff33.ace -k
+        #- curl -o ${ACEDIR}/94-Pu-241g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-241g/releases/download/v4.0T0/94-Pu-241g.jeff33.ace -k
       script:
         - python ${UTILS}/add_ace_openmc.py ${ACEDIR} -d ${H5DIR}
