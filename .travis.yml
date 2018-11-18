@@ -7,7 +7,6 @@ env:
     - ACEDIR=${CACHEDIR}/ace
     - H5DIR=${CACHEDIR}/h5
     - FC='gfortran-5'
-    - PYTHONPATH="${UTILS}/openmc:${PYTHONPATH}"
 
 python:
   - "3.6"
@@ -42,7 +41,6 @@ jobs:
         - curl -o ${ACEDIR}/94-Pu-239g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-239g/releases/download/v4.0T0/94-Pu-239g.jeff33.ace -k
         - curl -o ${ACEDIR}/94-Pu-240g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-240g/releases/download/v4.0T0/94-Pu-240g.jeff33.ace -k
         - curl -o ${ACEDIR}/94-Pu-241g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-241g/releases/download/v4.0T0/94-Pu-241g.jeff33.ace -k
-        - find ${ACEDIR} -type f
       script:
-        - echo $PYTHONPATH
+        - ( cd ${UTILS}/openmc && python setup.py install )
         - python ${UTILS}/add_ace_openmc.py ${ACEFILE} -d ${H5DIR}
