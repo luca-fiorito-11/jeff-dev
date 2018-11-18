@@ -21,17 +21,21 @@ stages:
   - setup
   - ace
   - hdf5
+  - run
 
 jobs:
   include:
 
     - stage: setup
       name: setup cache directory
-      before_install:
-        - sudo apt install gfortran
-        - sudo apt install g++
-        - sudo apt install cmake
-        - sudo apt install libhdf5-dev
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gfortran-5
+            - cmake
+            - libhdf5-dev
       install:
         - rm -rf ${CACHEDIR}
         - mkdir -p ${CACHEDIR} ${ACEDIR} ${H5DIR}
