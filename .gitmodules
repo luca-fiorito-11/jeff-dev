@@ -1,0 +1,9 @@
+[submodule "94-Pu-240g"]
+	path = 94-Pu-240g
+	url = https://github.com/luca-fiorito-11/94-Pu-240g.git
+[submodule "94-Pu-241g"]
+	path = 94-Pu-241g
+	url = https://github.com/luca-fiorito-11/94-Pu-241g.git
+[submodule "94-Pu-239g"]
+	path = 94-Pu-239g
+	url = https://github.com/luca-fiorito-11/94-Pu-239g.git
