@@ -44,4 +44,5 @@ jobs:
         - curl -o ${ACEDIR}/94-Pu-241g.jeff33.ace https://github.com/luca-fiorito-11/94-Pu-241g/releases/download/v4.0T0/94-Pu-241g.jeff33.ace -k
         - find ${ACEDIR} -type f
       script:
+        - echo $PYTHONPATH
         - python ${UTILS}/add_ace_openmc.py ${ACEFILE} -d ${H5DIR}
