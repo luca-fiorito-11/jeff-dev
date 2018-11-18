@@ -7,7 +7,7 @@ env:
     - ACEDIR=${CACHEDIR}/ace
     - H5DIR=${CACHEDIR}/h5
     - FC='gfortran-5'
-    - PYTHONPATH="openmc:${PYTHONPATH}"
+    - PYTHONPATH="${UTILS}/openmc:${PYTHONPATH}"
 
 python:
   - "3.6"
@@ -27,7 +27,7 @@ jobs:
       name: setup cache directory
       install:
         - rm -rf ${CACHEDIR}
-        - mkdir -p ${CACHEDIR} ${ACEDIR}
+        - mkdir -p ${CACHEDIR} ${ACEDIR} ${H5DIR}
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/PVBV_utils.git )
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/benchmarks.git )
         - bash ${UTILS}/install_openmc.sh
