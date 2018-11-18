@@ -7,3 +7,9 @@
 [submodule "94-Pu-239g"]
 	path = 94-Pu-239g
 	url = https://github.com/luca-fiorito-11/94-Pu-239g.git
+[submodule "31-Ga-69g"]
+	path = 31-Ga-69g
+	url = https://github.com/luca-fiorito-11/31-Ga-69g.git
+[submodule "31-Ga-71g"]
+	path = 31-Ga-71g
+	url = https://github.com/luca-fiorito-11/31-Ga-71g.git
