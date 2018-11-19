@@ -2,7 +2,7 @@ language: python
 
 env:
   global:
-    - CACHEDIR=mycache
+    - CACHEDIR=~/mycache
     - UTILS=${CACHEDIR}/PVBV_utils
     - ACEDIR=${CACHEDIR}/ace
     - H5DIR=${CACHEDIR}/h5
