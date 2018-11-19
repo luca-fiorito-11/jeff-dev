@@ -47,7 +47,7 @@ jobs:
         - mkdir -p ${UTILS}/openmc/build && cd ${UTILS}/openmc/build
         - cmake -DCMAKE_CXX_COMPILER=$(which g++-5) ..
         - make
-        - find ${UTILS}/openmc/build -type f
+        - find -type f
       script: skip
 
 
