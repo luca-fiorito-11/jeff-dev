@@ -72,7 +72,14 @@ jobs:
 
     - stage: run
       name: pmf1
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - libhdf5-dev      
       script:
+        - h5cc -showconfig
         - export LD_LIBRARY_PATH=/usr
         - export HDF5_ROOT=/usr
         - ( cd ${CACHEDIR}/benchmarks/icsbep/pu-met-fast-001/openmc && ${UTILS}/openmc/build/bin/openmc )
