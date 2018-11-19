@@ -45,10 +45,6 @@ jobs:
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/benchmarks.git )
         - ( cd ${UTILS} && ./install_openmc.sh )
         - mkdir -p ${UTILS}/openmc/build && cd ${UTILS}/openmc/build
-        - h5cc -showconfig
-        #- "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
-        - export LD_LIBRARY_PATH=/usr
-        - export HDF5_ROOT=/usr
         - cmake -DCMAKE_CXX_COMPILER=$(which g++-5) ..
         - make
       script: skip
@@ -77,9 +73,11 @@ jobs:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - libhdf5-dev      
+            - gfortran-5
+            - gcc-5
+            - g++-5
+            - libhdf5-dev
       script:
-        - h5cc -showconfig
-        - export LD_LIBRARY_PATH=/usr
-        - export HDF5_ROOT=/usr
+        - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
+        - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - ( cd ${CACHEDIR}/benchmarks/icsbep/pu-met-fast-001/openmc && ${UTILS}/openmc/build/bin/openmc )
