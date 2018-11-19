@@ -51,7 +51,7 @@ jobs:
         - export HDF5_ROOT=/usr
         - cmake -DCMAKE_CXX_COMPILER=$(which g++-5) ..
         - make
-      script: ${UTILS}/openmc/build/bin/openmc
+      script: skip
 
 
     - stage: ace
