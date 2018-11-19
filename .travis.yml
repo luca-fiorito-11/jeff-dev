@@ -39,6 +39,9 @@ jobs:
             - cmake
             - libhdf5-dev
       install:
+        - g++ --version
+        - which g++
+        - which g++-5
         - rm -rf ${CACHEDIR}
         - mkdir -p ${CACHEDIR} ${ACEDIR} ${H5DIR}
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/PVBV_utils.git )
