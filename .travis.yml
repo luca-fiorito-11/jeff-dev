@@ -61,9 +61,20 @@ jobs:
 
     - stage: hdf5
       name: h5
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gfortran-5
+            - gcc-5
+            - g++-5
+            - libhdf5-dev
       install:
         - pip install pandas h5py scipy uncertainties
       script:
+        - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
+        - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - python ${UTILS}/add_ace_openmc.py ${ACEDIR} -d ${H5DIR}
 
     - stage: run
