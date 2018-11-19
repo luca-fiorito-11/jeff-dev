@@ -55,8 +55,6 @@ jobs:
 
     - stage: ace
       name: get ACE files
-      install:
-        - pip install pandas h5py scipy uncertainties
       script:
         - curl -o ${ACEDIR}/31-Ga-69g.jeff33.ace https://github.com/luca-fiorito-11/31-Ga-69g/releases/download/v4.0T0/31-Ga-69g.jeff33.ace -k -L
         - curl -o ${ACEDIR}/31-Ga-79g.jeff33.ace https://github.com/luca-fiorito-11/31-Ga-71g/releases/download/v4.0T0/31-Ga-71g.jeff33.ace -k -L
@@ -66,6 +64,8 @@ jobs:
 
     - stage: hdf5
       name: h5
+      install:
+        - pip install pandas h5py scipy uncertainties
       script:
         - python ${UTILS}/add_ace_openmc.py ${ACEDIR} -d ${H5DIR}
 
