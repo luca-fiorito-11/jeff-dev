@@ -28,20 +28,17 @@ jobs:
 
     - stage: setup
       name: setup cache directory
-      #addons:
-      #  apt:
-      #    sources:
-      #      - ubuntu-toolchain-r-test
-      #    packages:
-      #      - gfortran-5
-      #      - gcc-5
-      #      - g++-5
-      #      - cmake
-      #      - libhdf5-dev
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gfortran-5
+            - gcc-5
+            - g++-5
+            - cmake
+            - libhdf5-dev
       install:
-        - pip install h5py
-        - h5cc -showconfig
-        - aaa jsfsn
         - rm -rf ${CACHEDIR}
         - mkdir -p ${CACHEDIR} ${ACEDIR} ${H5DIR}
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/PVBV_utils.git )
@@ -81,7 +78,7 @@ jobs:
       script:
         - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
-        - python ${UTILS}/add_ace_openmc.py ${ACEDIR} -d ${H5DIR}
+        - python ${UTILS}/add_ace_openmc.py ${ACEDIR} -d ${H5DIR} --libver "earliest"
 
     - stage: run
       name: pmf1
