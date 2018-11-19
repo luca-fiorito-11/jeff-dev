@@ -45,6 +45,8 @@ jobs:
         - ( cd ${CACHEDIR} && git clone https://github.com/luca-fiorito-11/benchmarks.git )
         - ( cd ${UTILS} && ./install_openmc.sh )
         - mkdir -p ${UTILS}/openmc/build && cd ${UTILS}/openmc/build
+        - dpkg -L libhdf5
+#        - export HDF5_ROOT=$(which)
         - cmake -DCMAKE_CXX_COMPILER=$(which g++-5) ..
         - make
         - find -type f
