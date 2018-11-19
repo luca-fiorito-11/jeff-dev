@@ -46,7 +46,7 @@ jobs:
         - ( cd ${UTILS} && ./install_openmc.sh )
         - mkdir -p ${UTILS}/openmc/build && cd ${UTILS}/openmc/build
         - h5cc -showconfig
-#        - export HDF5_ROOT=$(which)
+        - export HDF5_ROOT=$(h5cc -showconfig | grep "Installation point" | cut -d: -f2 | xargs)
         - cmake -DCMAKE_CXX_COMPILER=$(which g++-5) ..
         - make
         - find -type f
