@@ -72,4 +72,4 @@ jobs:
     - stage: run
       name: pmf1
       script:
-        - ( cd icsbep/pu-met-fast-001/openmc && ${UTILS}/openmc/build/bin/openmc )
+        - ( cd ${CACHEDIR}/benchmarks/icsbep/pu-met-fast-001/openmc && ${UTILS}/openmc/build/bin/openmc )
