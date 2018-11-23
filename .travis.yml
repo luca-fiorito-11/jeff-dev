@@ -100,3 +100,20 @@ jobs:
         - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - ( cd ${CACHEDIR}/benchmarks/icsbep/pu-met-fast-001/openmc && ${UTILS}/openmc/build/bin/openmc )
+
+    - stage: run
+      name: pu-met-fast-002
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gfortran-5
+            - gcc-5
+            - g++-5
+            - libhdf5-dev
+            - hdf5-tools
+      script:
+        - chmod 777 ${H5DIR}/*
+        - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
+        - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
