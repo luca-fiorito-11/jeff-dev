@@ -74,7 +74,6 @@ jobs:
         - pip install pandas h5py scipy uncertainties
       script:
         - ls -l ${ACEDIR}/
-        - cat ${ACEDIR}/92-U-235g.ace
         - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - python ${UTILS}/add_ace_openmc.py ${ACEDIR} -d ${H5DIR} --libver "earliest"
