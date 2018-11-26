@@ -12,7 +12,7 @@ To produce a new candidate JEFF library release, follow the steps reported below
 4. commit your changes
 
 ## Content
-All nuclear data evaluated files in this branch belong to JEFF-3.3.
+All nuclear data evaluated files in this branch belong to JEFF-3.2.
 
 
 #### Neutron-induced file
