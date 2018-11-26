@@ -56,7 +56,7 @@ jobs:
 
     - stage: ace
       name: get ACE files
-      script: bash get_releases.sh
+      script: bash get_releases.sh neutron.csv
 
 
     - stage: hdf5
