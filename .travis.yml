@@ -73,6 +73,7 @@ jobs:
       install:
         - pip install pandas h5py scipy uncertainties
       script:
+        - h5cc --recursive ${ACEDIR}/94-Pu-242g.ace
         - ls -l ${ACEDIR}/
         - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
