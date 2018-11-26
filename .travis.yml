@@ -22,6 +22,7 @@ stages:
   - ace
   - hdf5
   - run
+  - deploy
   - clean
 
 
@@ -56,7 +57,8 @@ jobs:
 
     - stage: ace
       name: get ACE files
-      script: bash utils/get_releases.sh neutron.csv
+      script:
+        - bash utils/get_releases.sh <(tail -n +2 neutron.csv)
 
 
     - stage: hdf5
@@ -73,7 +75,6 @@ jobs:
       install:
         - pip install pandas h5py scipy uncertainties
       script:
-        - h5cc --recursive ${ACEDIR}/94-Pu-242g.ace
         - ls -l ${ACEDIR}/
         - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
@@ -241,6 +242,20 @@ jobs:
         - "export LD_LIBRARY_PATH=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - "export HDF5_ROOT=$(h5cc -showconfig | grep \"Installation point\" | cut -d: -f2 | xargs)"
         - ( cd ${CACHEDIR}/benchmarks/icsbep/heu-met-fast-003/openmc/case-1 && ${UTILS}/openmc/build/bin/openmc )
+
+
+    - stage: deploy
+      name: deploy
+      script: skip
+      deploy:
+
+        - provider: releases
+          on:
+            tags: true
+          api-key: $GITHUB_TOKEN
+          local-dir: ${ACEDIR} 
+          skip_cleanup: true
+
 
     - stage: clean
       name: clean cache directory
